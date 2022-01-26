@@ -27,6 +27,7 @@ function writePassword() {
   // Beginning of criteria for user selection
   if (!enter) {
     alert("This needs a value");
+
   } else if (enter < 8 || enter > 128) {
     // Begins & Checks user initial input
     enter = parseInt(prompt("You Must Choose Between 8 and 128 Characters"));
@@ -39,10 +40,72 @@ function writePassword() {
     confirmLowercase = confirm("Will password contain Lowercase lettters?");
   };
 
+  // User must input atleast one chosen criteria for password
+  if (!confirmCharacter && !confirmNumber && !confirmUppercase && !confirmLowercase) {
+    choices = alert("You must choose atleast one specified criteria!");
+  }
 
-  var passwordText = document.querySelector("#password");
+  // Else conditional statement for 4 true criterias selected
+  else if (confirmCharacter && confirmNumber && confirmUppercase && confirmLowercase) {
+    choices = character.concat(number, alpha, alpha2);
+  }
 
-  passwordText.value = password;
+  // Else conditional statement for 3 true criterias selected
+  else if (confirmCharacter && confirmNumber && confirmUppercase) {
+    choices = character.concat(number, alpha2);
+  }
+  else if (confirmCharacter && confirmNumber && confirmLowercase) {
+    choices = character.concat(number, alpha);
+  }
+  else if (confirmCharacter && confirmLowercase && confirmUppercase) {
+    choices = character.concat(alpha, alpha2);
+  }
+  else if (confirmNumber && confirmLowercase && confirmUppercase) {
+    choices = number.concat(alpha, alpha2);
+  }
+
+  // Else conditional statement for 2 true criterias selected
+  else if (confirmCharacter && confirmNumber) {
+    choices = character.concat(number);
+  } 
+  else if (confirmCharacter && confirmLowercase) {
+    choices = character.concat(alpha);
+  } 
+  else if (confirmCharacter && confirmUppercase) {
+    choices = character.concat(alpha2);
+  } 
+  else if (confirmLowercase && confirmNumber) {
+    choices = alpha.concat(number);
+  } 
+  else if (confirmLowercase && confirmUppercase) {
+    choices = alpha.concat(alpha2);
+  } 
+  else if (confirmNumber && confirmUppercase) {
+    choices = number.concat(alpha2);
+  }
+
+  // Else conditional statement for 1 true criteria selected
+  else if (confirmCharacter) {
+    choices = character;
+  }
+  else if (confirmNumber) {
+    choices = number;
+  }
+  else if (confirmLowercase) {
+    choices = alpha;
+  }
+
+  // Put space in for uppercase
+  else if (confirmUppercase) {
+    choices = space.concat(alpha2);
+  };
+
+  // Array Length placeholder
+  var password = [];
+
+  
+
+
 
 }
 
