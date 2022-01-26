@@ -6,7 +6,7 @@ var confirmUppercase;
 var confirmUppercase;
 
 // Addition for special, #s & Alphabet characters
-character = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+character = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", "="," ? ", "@", "[", "\\", "]", "_", "`", "{", "|", "}", "~"];
 number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 // Uppercase Conversion
@@ -103,11 +103,25 @@ function writePassword() {
   // Array Length placeholder
   var password = [];
 
-  
+  // Generates the randomized password based on the user chosen criteria
+  for (var i = 0; i < enter; i++) {
+    var pickChoices = choices[Math.floor(Math.random() * choices.length)];
+    password.push(pickChoices);
+  }
 
-
-
+  // Turns password array into string
+  var ps = password.join("");
+  UserInput(ps);
+  return(ps);
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+// Moves password string value into the html password container
+function UserInput(ps) {
+  document.getElementById("password").textContent = ps;
+}
+
+// Add event listener to generate password on click
+generateBtn.addEventListener("click", function () {
+  ps = writePassword();
+  document.getElementById("password").placeholder = ps;
+});
