@@ -14,13 +14,13 @@ space = [];
 var toUpper = function(x) {
   return x.toUpperCase();
 };
+var choices;
 // Creates Var for Uppercase Conversion
 alpha2 = alpha.map(toUpper);
-var choices;
 
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// generates & writes the password
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
